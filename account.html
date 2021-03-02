@@ -10,8 +10,12 @@
   <h1> Account Page </h1>
   <h2> Current Topic Of Interest </h2>
   <h2> Please Enter Your topic of Interest </h2>
-  </form>  
+  <footer id="id_actftr"></footer>
   <script type="text/javascript">
+  var numusers = localStorage.getItem("nusr");
+  console.log(numusers);
+  document.getElementById("id_actftr").innerHTML = 
+        "number of users= " + String(numusers);
   </script>
   </body>
 </html>

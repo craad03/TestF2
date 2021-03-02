@@ -9,9 +9,22 @@
   <body>
   <h1> Registration Page </h1>
   <h2> Please Fill out the Following Information  </h2>
- 
+  <form id= "form_reg">
+    <input type="text" name="user" id="id_regusr" placeholder="Username" required><br>
+    <input type="password" name="pass" id="id_regpwd" placeholder="Password" required><br>
+    <input type="email" name="email" id="id_regeml" placeholder="user@mail.com" required><br>
+    <input type="submit" value="Register" id ="id_regbtn" >
+  </form><br><br>
 
-  <script type="text/javascript">   
+  <script type="text/javascript">
+  document.getElementById("id_regbtn").addEventListener("click", (e) => {
+     e.preventDefault();
+     var numusers = localStorage.getItem("nusr");
+     console.log("register button click");
+     localStorage.setItem("nusr",String(numusers+1));
+     console.log(numusers);
+     location.assign("account.html");
+     })
   </script>
   </body>
 </html>

@@ -7,8 +7,9 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
     //initially, number of users is not set
-     if (localStorage.getItem("numusr") == null) {
-      localStorage.setItem("numusr",0);
+    localStorage.clear();
+     if (localStorage.getItem("nusr") == null) {
+      localStorage.setItem("nusr",0);
      }
     </script>
   </head>
@@ -20,12 +21,14 @@
     <input type="submit" value="Login" id ="id_logsbmt" >
   </form><br>
   <h2> ---Not a Member? Register Below ----  </h2><br><br>
-    <button onclick="document.location='register.html'"> Register </button>
+  <button onclick="document.location='register.html'"> Register </button>
   <footer id="id_logftr"></footer>  
   <script type="text/javascript">
-     document.getElementById("id_logftr").innerHTML=
-         "number of users= " + localStorage.getItem("numusr");
+     var numusers = localStorage.getItem("nusr");
+     document.getElementById("id_logftr").innerHTML = 
+          "number of users= " + String(numusers); 
      document.getElementById("id_logsbmt").addEventListener("click", (e) => {
+     e.preventDefault();
      console.log("log button click");
      location.assign("account.html");
      })

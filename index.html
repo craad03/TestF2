@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>TestF2</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+    //initially, number of users is not set
+     if (localStorage.getItem("numusr") == null) {
+      localStorage.setItem("numusr",0);
+     }
+    </script>
+  </head>
+  <body>
+  <h2> ---Please Login----  </h2>
+  <form id= "form_log">
+    <input type="text" name="user" id="id_logusr" placeholder="User" required><br>
+    <input type="password" name="pass" id="id_logpswd" placeholder="Passwrd" required><br>
+    <input type="submit" value="Login" id ="id_logsbmt" >
+  </form><br>
+  <h2> ---Not a Member? Register Below ----  </h2><br><br>
+    <button onclick="document.location='register.html'"> Register </button>
+  <footer id="id_logftr"></footer>  
+  <script type="text/javascript">
+     document.getElementById("id_logftr").innerHTML=
+         "number of users= " + localStorage.getItem("numusr");
+     document.getElementById("id_logsbmt").addEventListener("click", (e) => {
+     console.log("log button click");
+     location.assign("account.html");
+     })
+  </script>
+  </body>
+</html>

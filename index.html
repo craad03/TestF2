@@ -7,7 +7,7 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
     //initially, number of users is not set
-    localStorage.clear();
+    //localStorage.clear();
      if (localStorage.getItem("nusr") == null) {
       localStorage.setItem("nusr",0);
      }
@@ -30,6 +30,12 @@
      document.getElementById("id_logsbmt").addEventListener("click", (e) => {
      e.preventDefault();
      console.log("log button click");
+     const usrnamep = document.getElementById("form_log").user.value + ":p";
+     const formpsswd =  document.getElementById("form_log").pass.value;
+     var usrpsswd = localStorage.getItem(usrnamep);
+     if (usrpsswd == null){alert("User name does not exist");location.reload();}
+     if (usrpsswd !== formpsswd){alert("Incorrect password");location.reload();}
+     localStorage.setItem("curusr",usrnamep);
      location.assign("account.html");
      })
   </script>

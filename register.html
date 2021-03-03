@@ -19,10 +19,24 @@
   <script type="text/javascript">
   document.getElementById("id_regbtn").addEventListener("click", (e) => {
      e.preventDefault();
-     var numusers = localStorage.getItem("nusr");
      console.log("register button click");
-     localStorage.setItem("nusr",String(numusers+1));
+     const usrname = document.getElementById("form_reg").user.value;
+     const formpsswd =  document.getElementById("form_reg").pass.value;
+     const formemail = document.getElementById("form_reg").email.value;
+     var numusers = localStorage.getItem("nusr");
+     numusers = numusers + 1;
      console.log(numusers);
+     localStorage.setItem("nusr",numusers);
+     //data structure:
+     //   (user name, password value) - indexed by user name
+     //   (user name, email value) - indexed by user name
+     //   (user number, user name) - indexed by internal user number
+     console.log(usrname);
+     console.log(formpsswd);
+     console.log(formemail);
+     localStorage.setItem(usrname + ":p",formpsswd);
+     localStorage.setItem(usrname + ":e",formemail);
+     
      location.assign("account.html");
      })
   </script>

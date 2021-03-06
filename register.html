@@ -7,6 +7,7 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+ <!-- form for new user registration                          -->
   <h1> Registration Page </h1>
   <h2> Please Fill out the Following Information  </h2>
   <form id= "form_reg">
@@ -24,7 +25,9 @@
      const formpsswd =  document.getElementById("form_reg").pass.value;
      const formemail = document.getElementById("form_reg").email.value;
      var numusers = localStorage.getItem("nusr");
-     numusers = numusers + 1;
+     var nusers = Number(numusers)+1;
+     console.log(numusers);
+     numusers = nusers.toString();
      console.log(numusers);
      localStorage.setItem("nusr",numusers);
      //data structure:
@@ -34,8 +37,11 @@
      console.log(usrname);
      console.log(formpsswd);
      console.log(formemail);
+     //store new username, password, and email address in local localStorage
+     //use :p and :e to uniqify username, you can only have 1 field per index
      localStorage.setItem(usrname + ":p",formpsswd);
      localStorage.setItem(usrname + ":e",formemail);
+     localStorage.setItem("curusr",usrname + ":p");
      
      location.assign("account.html");
      })

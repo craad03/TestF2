@@ -8,34 +8,46 @@
     <script type="text/javascript">
     //initially, number of users is not set
     //un-comment this line to clear all local storage/password entries
-    //localStorage.clear();
-     if (localStorage.getItem("nusr") == null) {
-      localStorage.setItem("nusr",0);
+    localStorage.clear();
+    if (localStorage.getItem("nusr") == null) {
+      localStorage.setItem("nusr","0");
      }
     </script>
   </head>
   <body>
+  <!--  This is the Login form for previous users                   -->
   <h2> ---Please Login----  </h2>
   <form id= "form_log">
     <input type="text" name="user" id="id_logusr" placeholder="User" required><br>
     <input type="password" name="pass" id="id_logpswd" placeholder="Passwrd" required><br>
     <input type="submit" value="Login" id ="id_logsbmt" >
   </form><br>
+  <!--  Click here for new users to register                       -->
   <h2> ---Not a Member? Register Below ----  </h2><br><br>
   <button onclick="document.location='register.html'"> Register </button>
-  <footer id="id_logftr"></footer>  
+  <footer id="id_logftr"></footer> 
   <script type="text/javascript">
+     //script for log in previous user here
+     //data structure:
+     //(user name, password value) - indexed by user name :p on end of username for uniqueness
+     //(user name, email value) - indexed by user name :e on end of username for uniqueness
+     //("nusr", number of users)
+     //("curusr", name of current logged in user)
      var numusers = localStorage.getItem("nusr");
+     console.log(numusers);
      document.getElementById("id_logftr").innerHTML = 
-          "number of users= " + String(numusers); 
+          "number of users= " + numusers; 
      document.getElementById("id_logsbmt").addEventListener("click", (e) => {
      e.preventDefault();
      console.log("log button click");
      const usrnamep = document.getElementById("form_log").user.value + ":p";
      const formpsswd =  document.getElementById("form_log").pass.value;
      var usrpsswd = localStorage.getItem(usrnamep);
+     // check if password for this username defined
      if (usrpsswd == null){alert("User name does not exist");location.reload();}
+     //check if entered password equal to stored password
      if (usrpsswd !== formpsswd){alert("Incorrect password");location.reload();}
+     //store name of current user and go to account page
      localStorage.setItem("curusr",usrnamep);
      location.assign("account.html");
      })

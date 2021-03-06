@@ -15,12 +15,14 @@
   <script type="text/javascript">
   var numusers = localStorage.getItem("nusr");
   var currentusr = localStorage.getItem("curusr");
+  var cusrlen = currentusr.length;
   console.log(numusers);
   console.log(currentusr);
   document.getElementById("id_actftr1").innerHTML = 
-        "number of users= " + String(numusers);
+        "number of users= " + numusers;
+  //take trailing :p of username before displaying
   document.getElementById("id_actftr2").innerHTML = 
-        "user name= " + currentusr;      
+        "user name= " + currentusr.slice(0,cusrlen-2);      
   </script>
   </body>
 </html>
